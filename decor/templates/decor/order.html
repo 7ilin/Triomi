@@ -2,9 +2,11 @@
 
 {% block content %}
 
-    <h1>Перезвонить </h1>
+    <h1>Перезвонить мне</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Отправить</button>
+        <button type="submit" class="save .btn-default">Отправить</button>
+        <p>&nbsp;</p>
     </form>
+
 {% endblock %}
