@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from decor.models import Call
+from decor.models import Call, Portfolio
 from decor.forms import CallForm
 
 
@@ -26,6 +26,13 @@ def call_me(request):
 
 
 def portfolio(request):
-    return render(request, 'decor/album.html')
+    portfolios = Portfolio.objects.all()
+
+    return render(request, 'decor/album.html', {'portfolio': portfolios})
+
+
+def image_view(request, pk):
+    photo = get_object_or_404(Portfolio, pk=pk)
+    return render(request, 'decor/image.html', {'photo': photo})
 
 # Create your views here.

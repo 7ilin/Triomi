@@ -1,6 +1,6 @@
 from django import forms
 
-from decor.models import Call
+from decor.models import Call, Portfolio
 
 
 class CallForm(forms.ModelForm):
@@ -8,3 +8,5 @@ class CallForm(forms.ModelForm):
     class Meta:
         model = Call
         fields = ('name', 'phone_number', 'comment',)
+
+
