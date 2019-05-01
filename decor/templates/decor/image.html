@@ -1,0 +1,16 @@
+{% extends 'decor/base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<main role="main">
+    <section class="text-center">
+        <p class="lead text-muted">{{ portfolio.name }}</p>
+        <div class="container">
+            <img src="{{ portfolio.photo.url }}">
+            <p><a href="/portfolio/" class="btn btn-primary my-2">Предыдущая страница</a></p>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

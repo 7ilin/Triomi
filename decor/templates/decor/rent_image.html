@@ -1,0 +1,19 @@
+{% extends 'decor/base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<main role="main">
+    <section class="text-center">
+        <p class="lead text-muted">{{ rent.name }}</p>
+        <div class="container">
+            <img src="{{ rent.photo.url }}">
+            <p><a class="text-muted">{{ rent.text }}</a><br>
+            <p><a class="text-muted"> Стоимость аренды: {{ rent.price }} грн</a><br>
+            <a class="text-muted"> Залог: {{ rent.deposit }} грн</a></p>
+            <p><a href="/rent/" class="btn btn-primary my-2">Предыдущая страница</a></p>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

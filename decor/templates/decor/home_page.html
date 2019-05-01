@@ -1,0 +1,81 @@
+{% extends 'decor/base.html' %}
+{% block content %}
+
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+  <h1 class="display-6 font-italic">Свадебный декор | Флористика | Аренда</h1>
+  <p class="lead my-3">Праздник это событие, которое должно быть наполнено радостью, теплом и заботой о близких,
+    которые пришли разделить с вами торжество. Для нас важны Ваши эмоции, важно что бы Вы почувствовали себя счастливей...  </p>
+  <p class="lead mb-0"><a href="/post/" class="text-white font-weight-bold">Продолжить чтение...</a></p>
+</div>
+
+<div class="row mb-2">
+  <div class="col-md-6">
+    {% for portfolio in portfolio %}
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Наши работы</strong>
+        <h3 class="mb-0">{{ portfolio.name }}</h3>
+        <a href="#" class="stretched-link">Просмотр</a>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img src="{{ portfolio.photo.url }}" svg class="bd-placeholder-img" width="200" height="250" </svg>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="col-md-6">
+    {% for rent in rent %}
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-success">Аренда декора</strong>
+        <h3 class="mb-0">{{ rent.name}}</h3>
+        <p class="mb-auto">{{ rent.text}}</p>
+        <div class="mb-1 text-muted">Стоимость аренды {{ rent.price}} грн</div>
+        <a href="{% url 'rent_view' pk=rent.pk %}" class="stretched-link">Просмотр</a>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img src="{{ rent.photo.url }}" svg class="bd-placeholder-img" width="200" height="250" </svg>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        Последние записи
+      </h3>
+
+      {% for post in posts %}
+      <div class="blog-post">
+        <h2 class="blog-post-title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p class="blog-post-meta">Опубликовано: {{ post.published_date }} </p>
+        <div class="post">
+          <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+        {% endfor %}
+      </div><!-- /.blog-post -->
+    </div><!-- /.blog-main -->
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="font-italic">О нас</h4>
+        <p class="mb-0">Trio-mi-mi — студия по изготовлению декора и оформлению мероприятий. Для того, чтобы праздник удался,
+            нужно провести немаленькую работу от эскиза до готового проекта. Мы создаем концепцию, производим декор для свадьбы,
+            детских праздников, корпоративных мероприятий. Но, а если вам хочется что-то уникальное и индивидуальное,
+            наши мастера готовы воплотить ваши креативные идеи в жизнь.</p>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Мы в социальных сетях</h4>
+        <ol class="list-unstyled">
+          <li><a href="//www.instagram.com/triomi_ua">Instagram</a></li>
+          <li><a href="//www.facebook.com/Trio.mi.mi.3/">Facebook</a></li>
+        </ol>
+      </div>
+    </aside><!-- /.blog-sidebar -->
+  </div><!-- /.row -->
+</main><!-- /.container -->
+{% endblock %}
