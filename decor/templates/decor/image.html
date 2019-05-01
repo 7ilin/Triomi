@@ -3,13 +3,14 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-
-      {% for photo in portfolio %}
-            <div class="image">
-             <img src="{{ portfolio.photo.url }}" />
-                <p class="card-text">{{ portfolio.name }}</p>
-
-  {% endfor %}
-
+<main role="main">
+    <section class="text-center">
+        <p class="lead text-muted">{{ portfolio.name }}</p>
+        <div class="container">
+            <img src="{{ portfolio.photo.url }}">
+            <p><a href="/portfolio/" class="btn btn-primary my-2">Предыдущая страница</a></p>
+        </div>
+    </section>
+</main>
 
 {% endblock %}

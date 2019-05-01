@@ -1,5 +1,5 @@
 from django.contrib import admin
-from decor.models import Call, Portfolio
+from decor.models import Call, Portfolio, Post, Rent
 
 
 @admin.register(Call)
@@ -8,6 +8,8 @@ class CallAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Portfolio)
+admin.site.register(Post)
+admin.site.register(Rent)
 
 
 

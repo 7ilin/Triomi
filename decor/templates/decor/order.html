@@ -2,10 +2,10 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-    <h1>Перезвонить мне</h1>
-    <form method="post" novalidate>
-        {% csrf_token %}
-        {{ form|crispy }}
+<h1>Перезвонить мне</h1>
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
     <button type="submit" class="btn btn-success">Отправить</button>
-    </form>
+</form>
 {% endblock %}

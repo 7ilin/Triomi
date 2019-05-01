@@ -1,0 +1,25 @@
+{% extends 'decor/base.html' %}
+
+{% block content %}
+
+{% for post in posts %}
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <h1 class="display-6 font-italic">Свадебный декор | Флористика | Аренда</h1>
+    <p class="lead my-3">Праздник это событие, которое должно быть наполнено радостью, теплом и заботой о близких,
+        которые пришли разделить с вами торжество. Мы всегда стараемя сделать лучше, красивее и волшебней. Для нас важны
+        Ваши эмоции, важно что бы Вы почувствовали себя счастливей... </p>
+</div>
+<div class="post">
+    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    <p>{{ post.text|linebreaksbr }}</p>
+    <div class="date">
+        <p>Опубликовано: {{ post.published_date }}</p>
+    </div>
+
+    {% if user.is_authenticated %}
+    <a class="btn btn-success" href="{% url 'post_new' %}"><span class="glyphicon glyphicon-pencil">Добавить пост</span></a>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% endblock %}
